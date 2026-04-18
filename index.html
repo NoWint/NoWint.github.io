@@ -1603,6 +1603,22 @@
             </div>
         </section>
 
+        <!-- Background Music Player -->
+        <section class="music-player-section" style="background: var(--color-surface); padding: 40px 48px; border-radius: 12px; border: 1px solid var(--color-border); margin: 80px 0; text-align: center;">
+            <h3 style="font-family: 'Source Serif 4', serif; font-size: 24px; margin-bottom: 16px; color: var(--color-text);">🎹 背景音乐</h3>
+            <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px;">肖邦第一叙事曲 Op.23</p>
+            <audio id="bgMusic" controls loop style="width: 100%; max-width: 500px; margin: 0 auto;">
+                <source src="chopin-ballade-no1.mp3" type="audio/mpeg">
+                您的浏览器不支持音频播放。
+            </audio>
+            <div style="margin-top: 16px; display: flex; gap: 12px; justify-content: center; align-items: center;">
+                <button id="musicToggle" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">
+                    <span id="musicStatus">播放音乐</span>
+                </button>
+                <input type="range" id="volumeControl" min="0" max="100" value="30" style="width: 100px; cursor: pointer;">
+                <span style="font-size: 12px; color: var(--color-text-tertiary);">音量</span>
+            </div>
+        </section>
 
     </main>
 
@@ -1965,6 +1981,53 @@
                     prevSlide();
                 }
             }
+        }
+
+        // Background Music Control
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicStatus = document.getElementById('musicStatus');
+        const volumeControl = document.getElementById('volumeControl');
+
+        if (bgMusic && musicToggle && volumeControl) {
+            // Set initial volume to 30%
+            bgMusic.volume = 0.3;
+
+            // Toggle play/pause
+            musicToggle.addEventListener('click', () => {
+                if (bgMusic.paused) {
+                    bgMusic.play().then(() => {
+                        musicStatus.textContent = '暂停音乐';
+                        musicToggle.classList.remove('btn-secondary');
+                        musicToggle.classList.add('btn-primary');
+                    }).catch(err => {
+                        console.log('Playback failed:', err);
+                    });
+                } else {
+                    bgMusic.pause();
+                    musicStatus.textContent = '播放音乐';
+                    musicToggle.classList.remove('btn-primary');
+                    musicToggle.classList.add('btn-secondary');
+                }
+            });
+
+            // Volume control
+            volumeControl.addEventListener('input', (e) => {
+                bgMusic.volume = e.target.value / 100;
+            });
+
+            // Update button text when audio ends or pauses
+            bgMusic.addEventListener('pause', () => {
+                musicStatus.textContent = '播放音乐';
+                musicToggle.classList.remove('btn-primary');
+                musicToggle.classList.add('btn-secondary');
+            });
+
+            bgMusic.addEventListener('play', () => {
+                musicStatus.textContent = '暂停音乐';
+                musicToggle.classList.remove('btn-secondary');
+                musicToggle.classList.add('btn-primary');
+            });
         }
     </script>
 </body>
