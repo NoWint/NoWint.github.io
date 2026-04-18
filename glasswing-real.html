@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Project Nowint：云烛 | 未来已来</title>
+    <title>Project Nowint | 未来已来</title>
     <meta name="description" content="一个正在 vibe coding 中的系统，更多精彩内容即将发布。"/>
-    <meta property="og:title" content="Project Nowint：云烛"/>
+    <meta property="og:title" content="Project Nowint"/>
     <meta property="og:image" content="glasswing-hero-image.jpg"/>
     <link rel="icon" href="/favicon.ico"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -71,17 +71,17 @@
             left: 0;
             right: 0;
             height: 64px;
-            background: rgba(29, 29, 31, 0.72);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(29, 29, 31, 0.65);
+            backdrop-filter: saturate(200%) blur(30px);
+            -webkit-backdrop-filter: saturate(200%) blur(30px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 1000;
             transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         [data-theme="light"] header {
-            background: rgba(255, 255, 255, 0.72);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.65);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .site-header {
@@ -566,6 +566,240 @@
             font-size: 18px;
             color: var(--color-text-secondary);
             font-weight: 500;
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 120px 48px;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-content {
+            padding: 64px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .carousel-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--color-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .carousel-image img {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--color-surface-light);
+            border: 1px solid var(--color-border-light);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+            width: fit-content;
+            margin-bottom: 24px;
+        }
+
+        .carousel-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        .carousel-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: 42px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .carousel-description {
+            font-size: 16px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .carousel-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 32px 0;
+        }
+
+        .carousel-features li {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            margin-bottom: 12px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .carousel-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-size: 14px;
+        }
+
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: auto;
+        }
+
+        .carousel-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface-light);
+            color: var(--color-text);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .carousel-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-border-light);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--color-accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        @media (max-width: 1024px) {
+            .carousel-slide {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-content {
+                padding: 48px 32px;
+                order: 2;
+            }
+
+            .carousel-image {
+                padding: 32px;
+                order: 1;
+                min-height: 300px;
+            }
+
+            .carousel-title {
+                font-size: 32px;
+            }
+
+            .carousel-section {
+                padding: 80px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-content {
+                padding: 32px 24px;
+            }
+
+            .carousel-image {
+                padding: 24px;
+                min-height: 250px;
+            }
+
+            .carousel-image img {
+                max-height: 300px;
+            }
+
+            .carousel-title {
+                font-size: 28px;
+            }
+
+            .carousel-description {
+                font-size: 15px;
+            }
+
+            .carousel-features li {
+                font-size: 14px;
+            }
         }
 
         /* CTA Section */
@@ -1108,7 +1342,7 @@
                     <span class="hero-badge">进行中</span>
                     <h1>Project Nowint</h1>
                     <p class="hero-subtitle">
-                        我是云烛，还没想好写什么，但是未来会在网站上发布更多精彩的内容。这是一个正在 vibe coding 中的系统，一切皆有可能。
+                        我们是 Nowint，致力于构建智能化的技术解决方案。从量化交易到本地 AI，我们正在打造下一代工具。这是一个正在 vibe coding 中的系统，一切皆有可能。
                     </p>
                     <div class="hero-cta">
                         <a href="#introduction" class="btn btn-primary">
@@ -1127,45 +1361,109 @@
                 </div>
                 <div class="hero-asset">
                     <video autoplay muted playsinline loop>
-                        <source src="/BonjourOVO/glasswing-hero-video.webm" type="video/webm">
+                        <source src="/glasswing-hero-video.webm" type="video/webm">
                         您的浏览器不支持视频标签。
                     </video>
                 </div>
             </div>
         </section>
 
-        <section id="introduction">
+        <section id="introduction" class="carousel-section">
             <div class="section-header">
-                <h2 class="section-title">关于云烛</h2>
+                <h2 class="section-title">关于我们</h2>
                 <p class="section-subtitle">
-                    一个充满可能性的项目，正在悄然酝酿中。
+                    探索技术与金融的交汇点，构建智能化的未来解决方案。
                 </p>
             </div>
 
-            <div class="content-block">
-                <p>
-                    我是云烛，目前还没想好具体要写什么内容。但这将是一个充满创意与激情的项目，融合了技术、艺术与无限想象。
-                </p>
-                <p>
-                    Project Nowint 是一个正在进行中的系统，它代表着"此刻即未来"的理念。在这个快速变化的时代，我们相信每一个当下都蕴含着改变世界的力量。
-                </p>
-                <p>
-                    虽然具体内容还未确定，但可以肯定的是，这将是一次独特的探索之旅。或许会涉及前沿技术、深度思考，也可能是生活感悟、艺术创作。一切皆有可能，敬请期待。
-                </p>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1: EricMonitor -->
+                    <div class="carousel-slide active">
+                        <div class="carousel-content">
+                            <span class="carousel-tag">量化交易系统</span>
+                            <h3 class="carousel-title">EricMonitor</h3>
+                            <p class="carousel-description">
+                                面向A股市场的专业化量化交易监控平台，基于Node.js与ECharts技术架构，集成实时行情数据获取、多维度技术指标分析、策略回测验证及市场情绪评估等核心功能模块，为量化交易参与者提供系统化的监控分析与决策支持工具。
+                            </p>
+                            <ul class="carousel-features">
+                                <li>多技术指标共振分析：集成MA均线、MACD、RSI、布林带、KDJ五大核心指标</li>
+                                <li>专业K线形态识别：支持吞没形态、锤子线、十字星等经典形态检测</li>
+                                <li>行为金融学指标体系：处置效应、羊群效应、恐慌与贪婪指数量化</li>
+                                <li>全维度资金监控：北向/南向资金流向、板块热力图、主力资金追踪</li>
+                            </ul>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn" onclick="prevSlide()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="carousel-dots">
+                                    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                                    <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                                </div>
+                                <button class="carousel-btn" onclick="nextSlide()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-image">
+                            <img src="EricMonitorIMAGE.png" alt="EricMonitor 量化交易监控系统界面">
+                        </div>
+                    </div>
+
+                    <!-- Slide 2: EricClient -->
+                    <div class="carousel-slide">
+                        <div class="carousel-content">
+                            <span class="carousel-tag">本地AI客户端</span>
+                            <h3 class="carousel-title">EricClient</h3>
+                            <p class="carousel-description">
+                                基于Ollama框架的本地化大语言模型推理客户端，支持多模型管理与智能对话交互。采用现代化界面设计理念，实现本地AI能力的便捷调用与个性化配置，为用户提供私密、高效的智能助手体验。
+                            </p>
+                            <ul class="carousel-features">
+                                <li>Ollama原生集成：无缝对接本地大模型服务，支持gemma、llama等主流模型</li>
+                                <li>多模型管理：可视化模型状态监控、版本管理与快速切换</li>
+                                <li>个性化配置：用户画像定制、偏好设置与上下文记忆</li>
+                                <li>隐私优先：本地推理确保数据安全，无需云端传输</li>
+                            </ul>
+                            <div class="carousel-nav">
+                                <button class="carousel-btn" onclick="prevSlide()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                    </svg>
+                                </button>
+                                <div class="carousel-dots">
+                                    <span class="carousel-dot" onclick="goToSlide(0)"></span>
+                                    <span class="carousel-dot active" onclick="goToSlide(1)"></span>
+                                </div>
+                                <button class="carousel-btn" onclick="nextSlide()">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="carousel-image">
+                            <img src="EricClientIMAGE.png" alt="EricClient 本地AI客户端界面">
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="stats-grid">
+            <div class="stats-grid" style="margin-top: 80px;">
                 <div class="stat-card">
-                    <div class="stat-value">∞</div>
-                    <div class="stat-label">无限可能</div>
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">核心产品</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">24/7</div>
-                    <div class="stat-label">持续更新</div>
+                    <div class="stat-label">持续运行</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">100%</div>
-                    <div class="stat-label">用心制作</div>
+                    <div class="stat-label">本地部署</div>
                 </div>
             </div>
         </section>
@@ -1256,7 +1554,7 @@
                     </p>
                     <div class="quote-author-block">
                         <div class="quote-author">
-                            <p class="quote-author-name">云烛</p>
+                            <p class="quote-author-name">Nowint</p>
                             <p class="quote-author-title">创始人 & 创作者</p>
                         </div>
                         <a href="#" class="quote-link">了解更多 →</a>
@@ -1282,7 +1580,7 @@
                     </p>
                     <div class="quote-author-block">
                         <div class="quote-author">
-                            <p class="quote-author-name">云烛实验室</p>
+                            <p class="quote-author-name">Nowint Labs</p>
                             <p class="quote-author-title">创新理念</p>
                         </div>
                         <a href="#" class="quote-link">探索更多 →</a>
@@ -1356,7 +1654,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copyright">© 2026 Project Nowint by 云烛</p>
+                <p class="footer-copyright">© 2026 Project Nowint</p>
                 <div class="footer-social">
                     <a href="#" aria-label="LinkedIn">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -1410,13 +1708,13 @@
             
             if (window.pageYOffset > 100) {
                 // Apple style: more opaque when scrolled
-                header.style.background = isDark ? 'rgba(29, 29, 31, 0.92)' : 'rgba(255, 255, 255, 0.92)';
+                header.style.background = isDark ? 'rgba(29, 29, 31, 0.85)' : 'rgba(255, 255, 255, 0.85)';
                 header.style.boxShadow = isDark 
-                    ? '0 1px 0 rgba(255, 255, 255, 0.15)' 
-                    : '0 1px 0 rgba(0, 0, 0, 0.1)';
+                    ? '0 1px 0 rgba(255, 255, 255, 0.12)' 
+                    : '0 1px 0 rgba(0, 0, 0, 0.08)';
             } else {
                 // Apple style: default transparency
-                header.style.background = isDark ? 'rgba(29, 29, 31, 0.72)' : 'rgba(255, 255, 255, 0.72)';
+                header.style.background = isDark ? 'rgba(29, 29, 31, 0.65)' : 'rgba(255, 255, 255, 0.65)';
                 header.style.boxShadow = 'none';
             }
         }
@@ -1429,15 +1727,15 @@
         const translations = {
             zh: {
                 nav: ['关于', '愿景', '进展', '联系'],
-                hero: ['进行中', 'Project Nowint', '我是云烛，还没想好写什么，但是未来会在网站上发布更多精彩的内容。这是一个正在 vibe coding 中的系统，一切皆有可能。', '了解更多', '查看进展', '您的浏览器不支持视频标签。'],
-                intro: ['关于云烛', '一个充满可能性的项目，正在悄然酝酿中。'],
+                hero: ['进行中', 'Project Nowint', '我们是 Nowint，致力于构建智能化的技术解决方案。从量化交易到本地 AI，我们正在打造下一代工具。这是一个正在 vibe coding 中的系统，一切皆有可能。', '了解更多', '查看进展', '您的浏览器不支持视频标签。'],
+                intro: ['关于我们', '探索技术与金融的交汇点，构建智能化的未来解决方案。'],
                 cta: ['订阅更新', '联系我们'],
                 contact: ['联系方式', '快手号：', '广告位招租', '黄金广告位虚位以待！如有合作意向，请通过上方联系方式与我们联系。']
             },
             en: {
                 nav: ['About', 'Vision', 'Progress', 'Contact'],
-                hero: ['In Progress', 'Project Nowint', 'I\'m Yunzhu. Haven\'t decided what to write yet, but will publish more exciting content on this website in the future. This is a system currently in vibe coding, anything is possible.', 'Learn More', 'View Progress', 'Your browser does not support the video tag.'],
-                intro: ['About Yunzhu', 'A project full of possibilities, quietly brewing.'],
+                hero: ['In Progress', 'Project Nowint', 'We are Nowint, dedicated to building intelligent technology solutions. From quantitative trading to local AI, we are crafting the next generation of tools. This is a system currently in vibe coding, anything is possible.', 'Learn More', 'View Progress', 'Your browser does not support the video tag.'],
+                intro: ['About Us', 'Exploring the intersection of technology and finance, building intelligent future solutions.'],
                 cta: ['Subscribe', 'Contact Us'],
                 contact: ['Contact', 'Kuaishou ID:', 'Advertising Space Available', 'Prime advertising space available! If you have cooperation intentions, please contact us through the contact information above.']
             }
@@ -1523,6 +1821,104 @@
         window.addEventListener('scroll', () => {
             updateHeaderStyle();
         });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 2;
+        let autoPlayInterval;
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            // Update track position
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update slide visibility
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                nextSlide();
+            }, 6000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // Initialize carousel
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCarousel();
+            startAutoPlay();
+        });
+
+        // Pause autoplay when user interacts with carousel
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            carouselContainer.addEventListener('mouseleave', () => {
+                startAutoPlay();
+            });
+        }
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (carouselContainer) {
+            carouselContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        }
     </script>
 </body>
 </html>
