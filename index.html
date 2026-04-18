@@ -1993,6 +1993,44 @@
             // Set initial volume to 30%
             bgMusic.volume = 0.3;
 
+            // Try to autoplay on page load
+            function attemptAutoplay() {
+                bgMusic.play().then(() => {
+                    musicStatus.textContent = '暂停音乐';
+                    musicToggle.classList.remove('btn-secondary');
+                    musicToggle.classList.add('btn-primary');
+                }).catch(err => {
+                    // Autoplay blocked by browser, wait for user interaction
+                    console.log('Autoplay blocked, waiting for user interaction');
+                    musicStatus.textContent = '播放音乐';
+                    
+                    // Try autoplay again on first user interaction
+                    const startMusicOnInteraction = () => {
+                        bgMusic.play().then(() => {
+                            musicStatus.textContent = '暂停音乐';
+                            musicToggle.classList.remove('btn-secondary');
+                            musicToggle.classList.add('btn-primary');
+                        }).catch(e => console.log('Playback failed:', e));
+                        
+                        // Remove event listeners after first interaction
+                        document.removeEventListener('click', startMusicOnInteraction);
+                        document.removeEventListener('scroll', startMusicOnInteraction);
+                        document.removeEventListener('keydown', startMusicOnInteraction);
+                    };
+                    
+                    document.addEventListener('click', startMusicOnInteraction, { once: true });
+                    document.addEventListener('scroll', startMusicOnInteraction, { once: true });
+                    document.addEventListener('keydown', startMusicOnInteraction, { once: true });
+                });
+            }
+
+            // Attempt autoplay when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', attemptAutoplay);
+            } else {
+                attemptAutoplay();
+            }
+
             // Toggle play/pause
             musicToggle.addEventListener('click', () => {
                 if (bgMusic.paused) {
@@ -2018,9 +2056,11 @@
 
             // Update button text when audio ends or pauses
             bgMusic.addEventListener('pause', () => {
-                musicStatus.textContent = '播放音乐';
-                musicToggle.classList.remove('btn-primary');
-                musicToggle.classList.add('btn-secondary');
+                if (!bgMusic.ended) {
+                    musicStatus.textContent = '播放音乐';
+                    musicToggle.classList.remove('btn-primary');
+                    musicToggle.classList.add('btn-secondary');
+                }
             });
 
             bgMusic.addEventListener('play', () => {
