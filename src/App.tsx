@@ -1,4 +1,5 @@
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-motion';
+import { useEffect } from 'react';
 import { Nav } from './components/Nav';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionDots } from './components/SectionDots';
@@ -32,12 +33,22 @@ const SECTIONS = [
 
 export function App() {
   const prefersReducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
+  const scrollProgress = useMotionValue(0);
   const veilOpacity = useTransform(
-    scrollYProgress,
+    scrollProgress,
     [0, 0.04, 0.88, 0.94, 1],
     [0, 1, 1, 0.15, 0.15],
   );
+
+  useEffect(() => {
+    const onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      scrollProgress.set(max > 0 ? window.scrollY / max : 0);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [scrollProgress]);
 
   return (
     <>
