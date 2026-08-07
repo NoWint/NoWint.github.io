@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
 import { Blockquote } from '../components/Blockquote';
 import styles from './Studio.module.css';
@@ -9,9 +10,40 @@ const ERAS = [
   { name: '人工智能时代', note: '软件作为主动协作者' },
 ];
 
-export function Studio() {
+function EraLine({ era, index, total, scrollYProgress, prefersReducedMotion }: {
+  era: { name: string; note: string };
+  index: number;
+  total: number;
+  scrollYProgress: import('framer-motion').MotionValue<number>;
+  prefersReducedMotion: boolean | null;
+}) {
+  const start = (index / total) * 0.5;
+  const end = ((index + 1) / total) * 0.5;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [40, 0]);
+  const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
   return (
-    <section id="studio" className="section section-lg">
+    <motion.div
+      className={styles.era}
+      style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
+    >
+      <div className={styles.eraName}>{era.name}</div>
+      <div className={styles.eraNote}>{era.note}</div>
+    </motion.div>
+  );
+}
+
+export function Studio() {
+  const ref = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  return (
+    <section id="studio" ref={ref} className="section section-lg">
       <div className="container">
         <ChapterMark num="04" title="Studio" />
         <div className={styles.logo}>
@@ -40,17 +72,14 @@ export function Studio() {
         </p>
         <div className={styles.eras}>
           {ERAS.map((era, i) => (
-            <motion.div
+            <EraLine
               key={era.name}
-              className={styles.era}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
-            >
-              <div className={styles.eraName}>{era.name}</div>
-              <div className={styles.eraNote}>{era.note}</div>
-            </motion.div>
+              era={era}
+              index={i}
+              total={ERAS.length}
+              scrollYProgress={scrollYProgress}
+              prefersReducedMotion={prefersReducedMotion}
+            />
           ))}
         </div>
       </div>

@@ -1,9 +1,32 @@
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
 import styles from './Vision.module.css';
 
 const LAYERS = ['人类认知的延伸', '创造力的放大器', '人与世界连接的新接口'];
+
+function LayerLine({ layer, index, total, scrollYProgress, prefersReducedMotion }: {
+  layer: string;
+  index: number;
+  total: number;
+  scrollYProgress: import('framer-motion').MotionValue<number>;
+  prefersReducedMotion: boolean | null;
+}) {
+  const start = (index / total) * 0.5;
+  const end = ((index + 1) / total) * 0.5;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [40, 0]);
+  const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
+  return (
+    <motion.li
+      className={styles.layer}
+      style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
+    >
+      {layer}
+    </motion.li>
+  );
+}
 
 export function Vision() {
   const ref = useRef<HTMLElement>(null);
@@ -32,16 +55,14 @@ export function Vision() {
             <p className={styles.cardLead}>它将成为:</p>
             <ul className={styles.layers}>
               {LAYERS.map((l, i) => (
-                <motion.li
+                <LayerLine
                   key={l}
-                  className={styles.layer}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
-                >
-                  {l}
-                </motion.li>
+                  layer={l}
+                  index={i}
+                  total={LAYERS.length}
+                  scrollYProgress={scrollYProgress}
+                  prefersReducedMotion={prefersReducedMotion}
+                />
               ))}
             </ul>
             <p className={styles.cardCoda}>

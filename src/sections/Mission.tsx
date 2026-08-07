@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
 import styles from './Mission.module.css';
 
@@ -15,9 +16,39 @@ const BUILDS = [
   '面向未来的软件基础设施',
 ];
 
-export function Mission() {
+function BuildLine({ build, index, total, scrollYProgress, prefersReducedMotion }: {
+  build: string;
+  index: number;
+  total: number;
+  scrollYProgress: import('framer-motion').MotionValue<number>;
+  prefersReducedMotion: boolean | null;
+}) {
+  const start = (index / total) * 0.5;
+  const end = ((index + 1) / total) * 0.5;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [40, 0]);
+  const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
   return (
-    <section id="mission" className="section">
+    <motion.div
+      className={styles.build}
+      style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
+    >
+      {build}
+    </motion.div>
+  );
+}
+
+export function Mission() {
+  const ref = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+
+  return (
+    <section id="mission" ref={ref} className="section">
       <div className="container">
         <ChapterMark num="05" title="Mission" />
         <div className={styles.kicker}>Build The Future of Digital Creation</div>
@@ -47,16 +78,14 @@ export function Mission() {
         </div>
         <div className={styles.builds}>
           {BUILDS.map((b, i) => (
-            <motion.div
+            <BuildLine
               key={b}
-              className={styles.build}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
-            >
-              {b}
-            </motion.div>
+              build={b}
+              index={i}
+              total={BUILDS.length}
+              scrollYProgress={scrollYProgress}
+              prefersReducedMotion={prefersReducedMotion}
+            />
           ))}
         </div>
       </div>
