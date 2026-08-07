@@ -1,0 +1,12 @@
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.col { display: flex; flex-direction: column; gap: var(--space-3); }
+
+@media (max-width: 900px) {
+  .row { grid-template-columns: 1fr; gap: var(--space-4); }
+}
