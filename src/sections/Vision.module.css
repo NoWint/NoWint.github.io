@@ -15,6 +15,7 @@
   border-radius: 20px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, var(--surface-elevated) 100%);
   text-align: center;
+  animation: glowBreath 3.5s ease-in-out infinite;
 }
 
 .cardKicker {
@@ -52,3 +53,12 @@
 
 @media (max-width: 768px) { .cardTitle { font-size: var(--text-display); } .layer { font-size: var(--text-headline); } }
 @media (max-width: 640px) { .cardTitle { font-size: var(--text-title); } .cardLead, .cardCoda { font-size: var(--text-body); } }
+
+@keyframes glowBreath {
+  0%, 100% {
+    box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-dim);
+  }
+  50% {
+    box-shadow: 0 0 40px var(--accent-glow), 0 0 80px var(--accent-dim);
+  }
+}

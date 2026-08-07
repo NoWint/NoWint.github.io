@@ -45,10 +45,11 @@ export function Vision() {
         <motion.div style={{ y: prefersReducedMotion ? undefined : cardY }}>
           <motion.div
             className={styles.card}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95, rotateX: 8 }}
+            whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
             viewport={{ once: true, margin: '-15%' }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            style={{ transformPerspective: 1000 }}
           >
             <div className={styles.cardKicker}>VISION</div>
             <h2 className={styles.cardTitle}>未来的软件不会只是工具。</h2>
