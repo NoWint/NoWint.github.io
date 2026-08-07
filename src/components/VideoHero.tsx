@@ -19,11 +19,6 @@ export function VideoHero() {
     offset: ['start start', 'end start'],
   });
 
-  // 视频层：scale + y + rotateX 3D 透视
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.12]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const rotateX = useTransform(scrollYProgress, [0, 1], [0, 8]);
-
   // 滚动提示层：上移 + 淡出
   const hintY = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const hintOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
@@ -36,23 +31,13 @@ export function VideoHero() {
 
   return (
     <div ref={ref} className={styles.wrap}>
-      <motion.video
+      <video
         className={styles.video}
         src="/Xiatian.mp4"
         autoPlay
         muted
         loop
         playsInline
-        style={
-          prefersReducedMotion
-            ? undefined
-            : {
-                scale,
-                y,
-                transformPerspective: 1000,
-                rotateX,
-              }
-        }
         aria-hidden="true"
       />
       <motion.div

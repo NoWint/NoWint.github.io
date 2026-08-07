@@ -6,12 +6,13 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #000;
 }
 
 body {
   font-family: var(--font-text);
   color: var(--text-primary);
-  background: var(--page-bg);
+  background: transparent;
   overflow-x: hidden;
   line-height: var(--leading-body);
   font-size: var(--text-body);
