@@ -1,0 +1,64 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+.prompt { color: var(--accent); }
+.name { color: var(--text-primary); }
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.text {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+  max-width: var(--container-narrow);
+}
+
+.spacer { height: var(--space-5); }
+
+.eras {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.era { display: flex; flex-direction: column; gap: 4px; }
+
+.eraName {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.eraNote { font-size: 14px; color: var(--text-tertiary); }
+
+@media (max-width: 768px) { .title { font-size: var(--text-title); } }
+@media (max-width: 640px) { .eras { grid-template-columns: 1fr; } }
