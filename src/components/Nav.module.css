@@ -29,6 +29,15 @@
 .link { font-size: 14px; color: var(--text-secondary); transition: color var(--duration-fast); }
 .link:hover { color: var(--accent); }
 
+.linkActive { color: var(--accent); position: relative; }
+.linkActive::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+}
+
 @media (max-width: 640px) {
   .links { display: none; }
   .nav { padding: 12px 20px; }
