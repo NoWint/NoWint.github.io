@@ -11,7 +11,7 @@ const ERAS = [
 
 export function Studio() {
   return (
-    <section id="studio" className="section">
+    <section id="studio" className="section section-lg">
       <div className="container">
         <ChapterMark num="04" title="Studio" />
         <div className={styles.logo}>

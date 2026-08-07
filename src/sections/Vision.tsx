@@ -6,7 +6,7 @@ const LAYERS = ['人类认知的延伸', '创造力的放大器', '人与世界�
 
 export function Vision() {
   return (
-    <section id="vision" className="section">
+    <section id="vision" className="section section-xl">
       <div className="container">
         <ChapterMark num="11" title="Vision" />
         <div className={styles.kicker}>Building The Next Layer of Computing</div>

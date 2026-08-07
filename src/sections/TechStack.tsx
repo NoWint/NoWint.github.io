@@ -21,7 +21,7 @@ const COLUMNS = [
 
 export function TechStack() {
   return (
-    <section id="stack" className="section">
+    <section id="stack" className="section section-sm">
       <div className="container">
         <ChapterMark num="09" title="Stack" />
         <motion.h2

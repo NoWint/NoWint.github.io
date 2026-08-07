@@ -43,7 +43,7 @@ const PROJECTS = [
 
 export function Projects() {
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section section-xl">
       <div className="container">
         <ChapterMark num="07" title="Projects" />
         <motion.h2

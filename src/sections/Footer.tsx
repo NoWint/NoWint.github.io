@@ -2,7 +2,7 @@ import styles from './Footer.module.css';
 
 export function Footer() {
   return (
-    <footer id="footer" className={styles.footer}>
+    <footer id="footer" className={`section section-lg ${styles.footer}`}>
       <div className="container">
         <div className={styles.logo}>
           <span className={styles.prompt}>&gt;_</span>

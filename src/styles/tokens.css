@@ -10,17 +10,18 @@
   --accent-glow: rgba(255, 255, 255, 0.2);
   --accent-dim: rgba(255, 255, 255, 0.08);
 
-  /* Text hierarchy */
+  /* Text hierarchy — 纯中性灰 */
   --text-primary: #F5F5F7;
   --text-secondary: #A1A1A6;
   --text-tertiary: #6E6E73;
 
   /* Typography */
-  --font-display: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-  --font-text: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  --font-display: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-text: 'SF Pro Text', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Type scale — Apple 9 级 */
+  /* Type scale — 7 档（新增 --text-statement 声明级）*/
+  --text-statement: 120px;
   --text-hero: 96px;
   --text-display: 72px;
   --text-title: 48px;
@@ -28,9 +29,30 @@
   --text-body: 17px;
   --text-caption: 14px;
 
+  /* Font weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Letter spacing — 统一 3 档 */
+  --tracking-tight: -0.04em;
+  --tracking-normal: -0.02em;
+  --tracking-wide: 0;
+
+  /* Line height — 统一 2 档 */
+  --leading-tight: 1.1;
+  --leading-body: 1.55;
+
   /* Spacing — 8px grid */
   --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
   --space-5: 48px; --space-6: 64px; --space-7: 96px;
+
+  /* Section padding — 差异化 4 档 */
+  --section-pad-sm: clamp(80px, 12vh, 120px) 0;
+  --section-pad-md: clamp(120px, 18vh, 180px) 0;
+  --section-pad-lg: clamp(160px, 22vh, 220px) 0;
+  --section-pad-xl: clamp(200px, 28vh, 280px) 0;
 
   /* Layout */
   --container-wide: 1440px;
@@ -46,11 +68,26 @@
 }
 
 @media (max-width: 1024px) {
-  :root { --text-hero: 64px; --text-display: 48px; --text-title: 36px; }
+  :root {
+    --text-statement: 72px;
+    --text-hero: 64px;
+    --text-display: 48px;
+    --text-title: 36px;
+  }
 }
 @media (max-width: 768px) {
-  :root { --text-hero: 48px; --text-display: 36px; --text-title: 28px; --text-headline: 24px; }
+  :root {
+    --text-statement: 56px;
+    --text-hero: 48px;
+    --text-display: 36px;
+    --text-title: 28px;
+    --text-headline: 24px;
+  }
 }
 @media (max-width: 640px) {
-  :root { --text-hero: 36px; --text-display: 28px; }
+  :root {
+    --text-statement: 40px;
+    --text-hero: 36px;
+    --text-display: 28px;
+  }
 }

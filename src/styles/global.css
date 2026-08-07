@@ -13,9 +13,8 @@ body {
   color: var(--text-primary);
   background: var(--page-bg);
   overflow-x: hidden;
-  line-height: 1.5;
+  line-height: var(--leading-body);
   font-size: var(--text-body);
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 0, 0, 0.5);
 }
 
 ::selection { background: var(--accent-dim); color: var(--text-primary); }
@@ -61,8 +60,12 @@ main, footer { position: relative; z-index: 1; }
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: clamp(120px, 18vh, 200px) 0;
+  padding: var(--section-pad-md);
 }
+
+.section-sm { padding: var(--section-pad-sm); }
+.section-lg { padding: var(--section-pad-lg); }
+.section-xl { padding: var(--section-pad-xl); }
 
 /* 顶部滚动进度条 */
 motion.div[data-testid='scroll-progress'],

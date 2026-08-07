@@ -21,7 +21,7 @@ export function Intro() {
   });
 
   return (
-    <section id="intro" ref={ref} className="section">
+    <section id="intro" ref={ref} className="section section-lg">
       <div className="container-narrow">
         <ChapterMark num="02" title="Intro" />
         <motion.h2

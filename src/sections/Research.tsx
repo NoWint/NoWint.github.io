@@ -28,7 +28,7 @@ const DIRECTIONS = [
 
 export function Research() {
   return (
-    <section id="research" className="section">
+    <section id="research" className="section section-lg">
       <div className="container">
         <ChapterMark num="06" title="Research" />
         <motion.h2
