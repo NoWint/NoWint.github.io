@@ -18,7 +18,7 @@ export function Engineering() {
                 className={styles.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-15%' }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 技术应当隐形,但其影响应当显著。
@@ -35,8 +35,8 @@ export function Engineering() {
                   key={p}
                   className={styles.pillar}
                   initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
                 >
                   {p}
@@ -49,7 +49,7 @@ export function Engineering() {
           className={styles.coda}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           复杂的系统应该拥有简单的表达。

@@ -1,5 +1,3 @@
-import { motion, useMotionValue, useTransform, useReducedMotion } from 'framer-motion';
-import { useEffect } from 'react';
 import { Nav } from './components/Nav';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionDots } from './components/SectionDots';
@@ -15,6 +13,7 @@ import { TechStack } from './sections/TechStack';
 import { BeyondCode } from './sections/BeyondCode';
 import { Vision } from './sections/Vision';
 import { Footer } from './sections/Footer';
+import { useEffect, useState } from 'react';
 
 const SECTIONS = [
   { id: 'hero', label: '首屏' },
@@ -31,30 +30,33 @@ const SECTIONS = [
   { id: 'footer', label: '署名' },
 ];
 
+// 5 档关键帧：首屏透明 → 滚动后不透明 → Vision 段透出仪式感
+function getVeilOpacity(progress: number): number {
+  if (progress <= 0.04) return progress / 0.04;
+  if (progress <= 0.88) return 1;
+  if (progress <= 0.94) return 1 - ((progress - 0.88) / 0.06) * 0.85;
+  return 0.15;
+}
+
 export function App() {
-  const prefersReducedMotion = useReducedMotion();
-  const scrollProgress = useMotionValue(0);
-  const veilOpacity = useTransform(
-    scrollProgress,
-    [0, 0.04, 0.88, 0.94, 1],
-    [0, 1, 1, 0.15, 0.15],
-  );
+  const [veilOpacity, setVeilOpacity] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      scrollProgress.set(max > 0 ? window.scrollY / max : 0);
+      const progress = max > 0 ? window.scrollY / max : 0;
+      setVeilOpacity(getVeilOpacity(progress));
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollProgress]);
+  }, []);
 
   return (
     <>
-      <motion.div
+      <div
         className="bg-veil"
-        style={prefersReducedMotion ? undefined : { opacity: veilOpacity }}
+        style={{ opacity: veilOpacity }}
         aria-hidden="true"
       />
       <a href="#hero" className="skip-link">跳到内容</a>
