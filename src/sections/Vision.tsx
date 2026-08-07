@@ -40,7 +40,7 @@ export function Vision() {
   return (
     <section id="vision" className="section section-xl" ref={ref}>
       <div className="container">
-        <ChapterMark num="11" title="Vision" />
+        <ChapterMark num="11" title="Vision" variant="emphasis" />
         <div className={styles.kicker}>Building The Next Layer of Computing</div>
         <motion.div style={{ y: prefersReducedMotion ? undefined : cardY }}>
           <motion.div

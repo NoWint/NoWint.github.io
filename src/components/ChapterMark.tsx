@@ -5,11 +5,13 @@ interface ChapterMarkProps {
   num: string;
   title: string;
   total?: number;
+  variant?: 'default' | 'emphasis';
 }
 
-export function ChapterMark({ num, title, total = 12 }: ChapterMarkProps) {
+export function ChapterMark({ num, title, total = 12, variant = 'default' }: ChapterMarkProps) {
+  const className = `${styles.mark} ${variant === 'emphasis' ? styles.emphasis : ''}`;
   return (
-    <div className={styles.mark}>
+    <div className={className}>
       <motion.div
         className={styles.line}
         initial={{ height: 0 }}

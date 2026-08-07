@@ -13,3 +13,17 @@
 }
 
 .progress { font-size: 11px; color: var(--text-tertiary); letter-spacing: 0.02em; }
+
+.emphasis .line {
+  width: 4px;
+  box-shadow: 0 0 12px var(--accent-glow), 0 0 24px var(--accent-glow);
+}
+
+.emphasis .num {
+  font-size: 14px;
+  letter-spacing: 0.18em;
+}
+
+.emphasis .progress {
+  font-size: 12px;
+}

@@ -1,7 +1,20 @@
+.wrap {
+  display: flex;
+  gap: var(--space-3);
+  align-items: stretch;
+}
+
+.rule {
+  width: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
 .quote {
   position: relative;
-  padding: var(--space-4) 0 var(--space-4) var(--space-4);
-  border-left: 2px solid var(--accent);
+  padding: var(--space-4) 0;
   font-family: var(--font-display);
   font-size: var(--text-headline);
   font-weight: 500;
