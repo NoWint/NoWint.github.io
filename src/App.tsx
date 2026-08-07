@@ -1,3 +1,10 @@
+import { Hero } from './sections/Hero';
+
 export function App() {
-  return <main style={{ minHeight: '100vh', background: '#050505' }} />;
+  return (
+    <main>
+      <Hero />
+      <div style={{ height: '100vh', background: 'var(--page-bg)' }} />
+    </main>
+  );
 }
