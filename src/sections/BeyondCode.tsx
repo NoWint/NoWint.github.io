@@ -20,7 +20,7 @@ export function BeyondCode() {
           className={styles.title}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           技术之外
@@ -33,7 +33,7 @@ export function BeyondCode() {
               className={styles.tag}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.08 }}
             >
               {t}
@@ -49,7 +49,7 @@ export function BeyondCode() {
               className={styles.trioItem}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.12 }}
             >
               <span className={styles.trioWord}>{t.word}</span>

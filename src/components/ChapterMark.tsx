@@ -16,14 +16,14 @@ export function ChapterMark({ num, title, total = 12, variant = 'default' }: Cha
         className={styles.line}
         initial={{ height: 0 }}
         whileInView={{ height: '100%' }}
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       />
       <motion.div
         className={styles.meta}
         initial={{ opacity: 0, x: -10 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-10%' }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
       >
         <div className={styles.num}>CHAPTER {num}</div>

@@ -53,7 +53,7 @@ export function Vision() {
             className={styles.card}
             initial={{ opacity: 0, scale: 0.95, rotateX: 8 }}
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
-            viewport={{ once: true, margin: '-15%' }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             style={{ transformPerspective: 1000 }}
           >

@@ -18,7 +18,7 @@ export function Footer() {
           className={styles.logo}
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className={styles.prompt}>{brand}</span>
@@ -27,7 +27,7 @@ export function Footer() {
           className={styles.identity}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
         >
           Xia Tian
@@ -36,7 +36,7 @@ export function Footer() {
           className={styles.role}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-15%' }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
         >
           Founder of PleaseEnterYourText
@@ -48,7 +48,7 @@ export function Footer() {
               className={styles.roleTag}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-15%' }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.9 + i * 0.15 }}
             >
               {r}
