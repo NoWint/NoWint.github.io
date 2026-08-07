@@ -1,0 +1,38 @@
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.lede {
+  font-size: var(--text-headline);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-3);
+  font-weight: 400;
+}
+
+.text {
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: var(--space-4);
+}
+
+.fields {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.field { display: inline; }
+
+.spacer { height: var(--space-6); }
+
+@media (max-width: 768px) { .title { font-size: var(--text-title); } }
+@media (max-width: 640px) { .fields { font-size: var(--text-body); } }
