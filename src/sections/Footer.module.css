@@ -14,7 +14,6 @@
 }
 
 .prompt { color: var(--accent); }
-.name { color: var(--text-primary); }
 
 .identity {
   font-family: var(--font-display);
@@ -33,9 +32,19 @@
 }
 
 .roles {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+}
+
+.roleTag {
   font-family: var(--font-mono);
-  font-size: var(--text-caption);
+  font-size: 12px;
   color: var(--text-tertiary);
+  border: 1px solid var(--hairline);
+  padding: 4px 10px;
+  border-radius: 4px;
   letter-spacing: 0.04em;
 }
 

@@ -1,6 +1,7 @@
-import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate, useReducedMotion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
+import { useCountUp } from '../hooks/useCountUp';
 import styles from './Vision.module.css';
 
 const LAYERS = ['人类认知的延伸', '创造力的放大器', '人与世界连接的新接口'];
@@ -30,12 +31,16 @@ function LayerLine({ layer, index, total, scrollYProgress, prefersReducedMotion 
 
 export function Vision() {
   const ref = useRef<HTMLElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   });
   const cardY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const inView = useInView(cardRef, { once: true, margin: '-15%' });
+  const projectCount = useCountUp(4, 1.5, inView);
+  const chapterCount = useCountUp(12, 1.5, inView);
 
   return (
     <section id="vision" className="section section-xl" ref={ref}>
@@ -44,6 +49,7 @@ export function Vision() {
         <div className={styles.kicker}>Building The Next Layer of Computing</div>
         <motion.div style={{ y: prefersReducedMotion ? undefined : cardY }}>
           <motion.div
+            ref={cardRef}
             className={styles.card}
             initial={{ opacity: 0, scale: 0.95, rotateX: 8 }}
             whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
@@ -66,6 +72,16 @@ export function Vision() {
                 />
               ))}
             </ul>
+            <div className={styles.stats}>
+              <div className={styles.stat}>
+                <span className={styles.statNum}>{projectCount}</span>
+                <span className={styles.statLabel}>PROJECTS</span>
+              </div>
+              <div className={styles.stat}>
+                <span className={styles.statNum}>{chapterCount}</span>
+                <span className={styles.statLabel}>CHAPTERS</span>
+              </div>
+            </div>
             <p className={styles.cardCoda}>
               PleaseEnterYourText 希望成为探索这一未来的一部分。
             </p>

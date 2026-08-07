@@ -51,6 +51,31 @@
 
 .cardCoda { font-size: var(--text-headline); color: var(--text-secondary); line-height: 1.55; margin-bottom: var(--space-2); }
 
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+
+.stat { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  letter-spacing: 0.16em;
+}
+
 @media (max-width: 768px) { .cardTitle { font-size: var(--text-display); } .layer { font-size: var(--text-headline); } }
 @media (max-width: 640px) { .cardTitle { font-size: var(--text-title); } .cardLead, .cardCoda { font-size: var(--text-body); } }
 
