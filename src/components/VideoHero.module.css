@@ -11,7 +11,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
+  will-change: transform, filter;
 }
 
 .overlay {
@@ -46,6 +46,7 @@
   color: var(--text-primary);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  will-change: filter;
 }
 
 .scrollLine {
