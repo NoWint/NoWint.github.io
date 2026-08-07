@@ -1,0 +1,47 @@
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.lede { font-size: var(--text-headline); color: var(--text-secondary); margin-bottom: var(--space-4); }
+
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-primary);
+  border: 1px solid var(--hairline);
+  padding: 8px 14px;
+  border-radius: 999px;
+}
+
+.spacer { height: var(--space-6); }
+
+.trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--hairline);
+}
+
+.trioItem { display: flex; flex-direction: column; gap: 4px; }
+
+.trioWord {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.trioRole { font-size: var(--text-body); color: var(--text-secondary); }
+
+@media (max-width: 768px) { .title { font-size: var(--text-title); } .trio { grid-template-columns: 1fr; } }

@@ -1,0 +1,44 @@
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-title);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.text { font-size: var(--text-body); color: var(--text-secondary); line-height: 1.7; }
+
+.pillars { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
+
+.pillar {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--accent);
+}
+
+.coda {
+  margin-top: var(--space-6);
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-style: italic;
+  max-width: var(--container-narrow);
+}
+
+@media (max-width: 768px) { .title { font-size: var(--text-headline); } .pillar { font-size: var(--text-body); } }
