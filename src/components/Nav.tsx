@@ -42,9 +42,8 @@ export function Nav() {
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`} aria-label="主导航">
-      <a href="#hero" className={styles.logoLink} aria-label=">_ PleaseEnterYourText">
-        <span className={styles.logoPrompt}>&gt;_</span>
-        <span className={styles.logoText}>PleaseEnterYourText</span>
+      <a href="#hero" className={styles.logoLink} aria-label="XiaTian">
+        <span className={styles.logoText}>XiaTian</span>
       </a>
       <ul className={styles.links}>
         {LINKS.map((link) => (
