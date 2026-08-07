@@ -20,6 +20,29 @@ const DIRECTIONS = [
   '更强大的创造工具',
 ];
 
+function PhilosophyLine({ line, index, total, scrollYProgress, prefersReducedMotion }: {
+  line: string;
+  index: number;
+  total: number;
+  scrollYProgress: import('framer-motion').MotionValue<number>;
+  prefersReducedMotion: boolean | null;
+}) {
+  const start = (index / total) * 0.5;
+  const end = ((index + 1) / total) * 0.5;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [40, 0]);
+  const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
+  return (
+    <motion.span
+      className={styles.line}
+      style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
+    >
+      {line}{' '}
+    </motion.span>
+  );
+}
+
 export function Philosophy() {
   const ref = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -43,23 +66,16 @@ export function Philosophy() {
           从第一性原理出发
         </motion.h2>
         <p className={styles.text}>
-          {LINES.map((line, i) => {
-            const start = (i / LINES.length) * 0.5;
-            const end = ((i + 1) / LINES.length) * 0.5;
-            const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
-            const y = useTransform(scrollYProgress, [start, end], [40, 0]);
-            const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
-            const filter = useMotionTemplate`blur(${blur}px)`;
-            return (
-              <motion.span
-                key={i}
-                className={styles.line}
-                style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
-              >
-                {line}{' '}
-              </motion.span>
-            );
-          })}
+          {LINES.map((line, i) => (
+            <PhilosophyLine
+              key={i}
+              line={line}
+              index={i}
+              total={LINES.length}
+              scrollYProgress={scrollYProgress}
+              prefersReducedMotion={prefersReducedMotion}
+            />
+          ))}
         </p>
         <div className={styles.directions}>
           {DIRECTIONS.map((d, i) => (

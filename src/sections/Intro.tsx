@@ -12,6 +12,29 @@ const FIELDS = [
   '脑科学与计算认知',
 ];
 
+function FieldLine({ line, index, total, scrollYProgress, prefersReducedMotion }: {
+  line: string;
+  index: number;
+  total: number;
+  scrollYProgress: import('framer-motion').MotionValue<number>;
+  prefersReducedMotion: boolean | null;
+}) {
+  const start = (index / total) * 0.5;
+  const end = ((index + 1) / total) * 0.5;
+  const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
+  const y = useTransform(scrollYProgress, [start, end], [40, 0]);
+  const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
+  const filter = useMotionTemplate`blur(${blur}px)`;
+  return (
+    <motion.span
+      className={styles.field}
+      style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
+    >
+      {line}{' '}
+    </motion.span>
+  );
+}
+
 export function Intro() {
   const ref = useRef<HTMLElement>(null);
   const prefersReducedMotion = useReducedMotion();
@@ -40,23 +63,16 @@ export function Intro() {
           我关注软件、人工智能与人类认知之间的深层连接,并尝试通过工程实践探索下一代计算系统的可能形态。我的工作横跨:
         </p>
         <p className={styles.fields}>
-          {FIELDS.map((line, i) => {
-            const start = (i / FIELDS.length) * 0.5;
-            const end = ((i + 1) / FIELDS.length) * 0.5;
-            const opacity = useTransform(scrollYProgress, [start, end], [0.15, 1]);
-            const y = useTransform(scrollYProgress, [start, end], [40, 0]);
-            const blur = useTransform(scrollYProgress, [start, end], [8, 0]);
-            const filter = useMotionTemplate`blur(${blur}px)`;
-            return (
-              <motion.span
-                key={i}
-                className={styles.field}
-                style={prefersReducedMotion ? { opacity } : { opacity, y, filter }}
-              >
-                {line}{' '}
-              </motion.span>
-            );
-          })}
+          {FIELDS.map((line, i) => (
+            <FieldLine
+              key={i}
+              line={line}
+              index={i}
+              total={FIELDS.length}
+              scrollYProgress={scrollYProgress}
+              prefersReducedMotion={prefersReducedMotion}
+            />
+          ))}
         </p>
         <div className={styles.spacer} />
         <Blockquote>
