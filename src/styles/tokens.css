@@ -1,7 +1,7 @@
 :root {
   --canvas: transparent;
   --page-bg: #050505;
-  --surface-elevated: rgba(20, 20, 22, 0.6);
+  --surface-elevated: rgba(20, 20, 20, 0.6);
   --surface-2: #1A1A1A;
   --hairline: rgba(255, 255, 255, 0.1);
 

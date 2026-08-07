@@ -27,7 +27,7 @@
 
 .card:hover { transform: translateY(-4px); border-color: var(--accent); }
 
-.thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0a0a0e; }
+.thumb { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #0a0a0a; }
 
 .thumb img {
   width: 100%; height: 100%; object-fit: cover; display: block;
