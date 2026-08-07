@@ -74,3 +74,13 @@ motion.div[data-testid='scroll-progress'],
   height: 2px; background: var(--accent);
   transform-origin: 0%; z-index: 200;
 }
+
+.bg-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: rgba(5, 5, 5, 0.86);
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+  backdrop-filter: blur(28px) saturate(130%);
+}

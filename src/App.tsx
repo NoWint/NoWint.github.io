@@ -1,3 +1,4 @@
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { Nav } from './components/Nav';
 import { ScrollProgress } from './components/ScrollProgress';
 import { SectionDots } from './components/SectionDots';
@@ -30,8 +31,21 @@ const SECTIONS = [
 ];
 
 export function App() {
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const veilOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.04, 0.88, 0.94, 1],
+    [0, 1, 1, 0.15, 0.15],
+  );
+
   return (
     <>
+      <motion.div
+        className="bg-veil"
+        style={prefersReducedMotion ? undefined : { opacity: veilOpacity }}
+        aria-hidden="true"
+      />
       <a href="#hero" className="skip-link">跳到内容</a>
       <ScrollProgress />
       <Nav />
