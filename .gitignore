@@ -12,3 +12,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .superpowers/sdd/
+
+# tsc -b 增量构建产物
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
