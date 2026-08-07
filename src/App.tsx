@@ -1,10 +1,55 @@
+import { Nav } from './components/Nav';
+import { ScrollProgress } from './components/ScrollProgress';
+import { SectionDots } from './components/SectionDots';
 import { Hero } from './sections/Hero';
+import { Intro } from './sections/Intro';
+import { Philosophy } from './sections/Philosophy';
+import { Studio } from './sections/Studio';
+import { Mission } from './sections/Mission';
+import { Research } from './sections/Research';
+import { Projects } from './sections/Projects';
+import { Engineering } from './sections/Engineering';
+import { TechStack } from './sections/TechStack';
+import { BeyondCode } from './sections/BeyondCode';
+import { Vision } from './sections/Vision';
+import { Footer } from './sections/Footer';
+
+const SECTIONS = [
+  { id: 'hero', label: '首屏' },
+  { id: 'intro', label: 'Xia Tian' },
+  { id: 'philosophy', label: '哲学' },
+  { id: 'studio', label: '工作室' },
+  { id: 'mission', label: '使命' },
+  { id: 'research', label: '研究' },
+  { id: 'projects', label: '项目' },
+  { id: 'engineering', label: '工程' },
+  { id: 'stack', label: '技术栈' },
+  { id: 'beyond', label: '技术之外' },
+  { id: 'vision', label: '愿景' },
+  { id: 'footer', label: '署名' },
+];
 
 export function App() {
   return (
-    <main>
-      <Hero />
-      <div style={{ height: '100vh', background: 'var(--page-bg)' }} />
-    </main>
+    <>
+      <a href="#hero" className="skip-link">跳到内容</a>
+      <ScrollProgress />
+      <Nav />
+      <SectionDots sections={SECTIONS} />
+      <main>
+        <Hero />
+        <Intro />
+        <Philosophy />
+        <Studio />
+        <Mission />
+        <Research />
+        <Projects />
+        <Engineering />
+        <TechStack />
+        <BeyondCode />
+        <Vision />
+      </main>
+      <Footer />
+    </>
   );
 }
