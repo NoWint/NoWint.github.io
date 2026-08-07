@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
 import styles from './Research.module.css';
 
@@ -27,8 +28,16 @@ const DIRECTIONS = [
 ];
 
 export function Research() {
+  const ref = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const gridY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
-    <section id="research" className="section section-lg">
+    <section id="research" className="section section-lg" ref={ref}>
       <div className="container">
         <ChapterMark num="06" title="Research" />
         <motion.h2
@@ -40,7 +49,10 @@ export function Research() {
         >
           研究方向
         </motion.h2>
-        <div className={styles.list}>
+        <motion.div
+          className={styles.list}
+          style={prefersReducedMotion ? undefined : { y: gridY }}
+        >
           {DIRECTIONS.map((d, i) => (
             <motion.div
               key={d.en}
@@ -66,7 +78,7 @@ export function Research() {
               <p className={styles.coda}>{d.coda}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { useRef } from 'react';
 import { ChapterMark } from '../components/ChapterMark';
 import styles from './Projects.module.css';
 
@@ -42,8 +43,16 @@ const PROJECTS = [
 ];
 
 export function Projects() {
+  const ref = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  });
+  const gridY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+
   return (
-    <section id="projects" className="section section-xl">
+    <section id="projects" className="section section-xl" ref={ref}>
       <div className="container">
         <ChapterMark num="07" title="Projects" />
         <motion.h2
@@ -55,7 +64,10 @@ export function Projects() {
         >
           项目
         </motion.h2>
-        <div className={styles.grid}>
+        <motion.div
+          className={styles.grid}
+          style={prefersReducedMotion ? undefined : { y: gridY }}
+        >
           {PROJECTS.map((p, i) => (
             <motion.article
               key={p.id}
@@ -77,7 +89,7 @@ export function Projects() {
               </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
