@@ -54,6 +54,15 @@ export function App() {
 
   return (
     <>
+      <div className="video-bg" aria-hidden="true">
+        <video
+          src="/Xiatian.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+      </div>
       <div
         className="bg-veil"
         style={{ opacity: veilOpacity }}

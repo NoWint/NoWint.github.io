@@ -31,15 +31,6 @@ export function VideoHero() {
 
   return (
     <div ref={ref} className={styles.wrap}>
-      <video
-        className={styles.video}
-        src="/Xiatian.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-      />
       <motion.div
         className={styles.scrollHint}
         style={
