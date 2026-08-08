@@ -57,7 +57,6 @@ export function App() {
       <div className="video-bg" aria-hidden="true">
         <video
           src="/Xiatian.mp4"
-          autoPlay
           muted
           loop
           playsInline
