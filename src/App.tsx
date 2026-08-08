@@ -13,7 +13,7 @@ import { TechStack } from './sections/TechStack';
 import { BeyondCode } from './sections/BeyondCode';
 import { Vision } from './sections/Vision';
 import { Footer } from './sections/Footer';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SECTIONS = [
   { id: 'hero', label: '首屏' },
@@ -40,8 +40,6 @@ function getVeilOpacity(progress: number): number {
 
 export function App() {
   const [veilOpacity, setVeilOpacity] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -54,38 +52,17 @@ export function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const togglePlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setIsPlaying(true);
-    } else {
-      v.pause();
-      setIsPlaying(false);
-    }
-  };
-
   return (
     <>
       <div className="video-bg" aria-hidden="true">
         <video
-          ref={videoRef}
           src="/Xiatian.mp4"
+          autoPlay
           muted
           loop
           playsInline
         />
       </div>
-      <button
-        type="button"
-        className="video-toggle"
-        onClick={togglePlay}
-        aria-label={isPlaying ? '暂停背景视频' : '播放背景视频'}
-        aria-pressed={isPlaying}
-      >
-        {isPlaying ? '❚❚' : '▶'}
-      </button>
       <div
         className="bg-veil"
         style={{ opacity: veilOpacity }}
