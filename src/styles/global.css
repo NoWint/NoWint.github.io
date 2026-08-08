@@ -82,7 +82,10 @@ motion.div[data-testid='scroll-progress'],
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: #050505;
+  /* 高级质感深色模糊遮罩:半透明深色 + 毛玻璃模糊,让视频透出而非被完全盖住 */
+  background: rgba(8, 9, 14, 0.62);
+  -webkit-backdrop-filter: blur(22px) saturate(1.2) brightness(0.9);
+  backdrop-filter: blur(22px) saturate(1.2) brightness(0.9);
 }
 
 .video-bg {
